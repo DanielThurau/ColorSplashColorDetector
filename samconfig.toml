@@ -1,0 +1,9 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "ColorSplashColorDetector"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1la0bps9l7q4o"
+s3_prefix = "ColorSplashColorDetector"
+region = "us-west-1"
+capabilities = "CAPABILITY_IAM"

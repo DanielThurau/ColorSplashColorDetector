@@ -11,29 +11,35 @@ Globals:
     Timeout: 3
 
 Resources:
-  HelloWorldFunction:
+  ColorSplashPhotoDetectorFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: hello_world/
+      CodeUri: src/
       Handler: app.lambda_handler
       Runtime: python3.8
+      MemorySize: 512
+      Timeout: 500
+      Description: A Lambda function that returns a list of ids.
+      FunctionName: ColorSplashPhotoDetector
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Layers:
+        - arn:aws:lambda:us-west-1:325793726646:layer:AWSLambda-Python38-SciPy1x:29
+        # - arn:aws:lambda:us-west-1:015914662809:layer:cv2-python38:4
+        # - arn:aws:lambda:us-west-1:015914662809:layer:sklearn-python38:3
       Events:
-        HelloWorld:
+        ColorSplashPhotoDetectorApi:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
+            Path: /getIds
             Method: get
-
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+  ColorSplashPhotoDetectorApi:
+    Description: "API Gateway endpoint URL for Prod stage for ColorSplashPhotoDetector function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getIds/"
+  ColorSplashPhotoDetectorFunction:
+    Description: "ColorSplashPhotoDetector Lambda Function ARN"
+    Value: !GetAtt ColorSplashPhotoDetectorFunction.Arn
+  ColorSplashPhotoDetectorFunctionIamRole:
+    Description: "Implicit IAM Role created for ColorSplashPhotoDetector function"
+    Value: !GetAtt ColorSplashPhotoDetectorFunctionRole.Arn

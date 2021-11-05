@@ -1,28 +1,7 @@
 # ColorSplashColorDetector
 
-## Usage
+## Description
 
-This project uses AWS SAM CLI to build, test, and deploy, but running the code and unit tests via the python executable is also possible. However, it is advisable to use SAM CLI since the tool will mimic the lambda runtime.
-
-### AWS SAM CLI
-
-Start docker either as a background process, in another terminal tab, or via desktop application.
-
-```shell
-$ sam build
-$ sam local invoke
-$ sam deploy
-```
-
-### Python
-
-```shell
-$ pip install -r tests/requirements.txt --user
-$ python -m pytest tests/unit -v
-$ AWS_SAM_STACK_NAME=ColorSplashPhotoProcessor python -m pytest tests/integration -v
-```
-
-It is worthwhile to have some form of virtualenv while developing on this pacakge for both the IDE and development. I recommend [conda](https://docs.conda.io/en/latest/).
 (CSCD) is a component of the overarching ColorSplash web application that can be found at https://thurau.io/colorsplash/. ColorSplash allows users to browse royalty free images that have colors within a certain Euclidean distance of a provided HEX code. CSCD runs in a python-3.8 AWS Lambda runtime and uses [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html#scipy.spatial.KDTree) to load processed image data into a *[k-d tree](https://en.wikipedia.org/wiki/K-d_tree)*. CSCD is invoked via API Gateway via HTTP GET requests and returns a JSON object with URLS to unsplash images.
 
 You can see other components of this project in the following Github repos

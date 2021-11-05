@@ -1,5 +1,7 @@
 .vscode/
 .env*
+!.env.example
 .DS_Store
 .aws-sam/
 __pycache__/
+.pytest_cache

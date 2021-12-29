@@ -4,7 +4,7 @@
 
 (CSCD) is a component of the overarching ColorSplash web application that can be found at https://thurau.io/colorsplash/. ColorSplash allows users to browse royalty free images that have colors within a certain Euclidean distance of a provided HEX code. CSCD runs in a python-3.8 AWS Lambda runtime and uses [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html#scipy.spatial.KDTree) to load processed image data into a *[k-d tree](https://en.wikipedia.org/wiki/K-d_tree)*. CSCD is invoked via API Gateway via HTTP GET requests and returns a JSON object with URLS to unsplash images.
 
-You can see other components of this project in the following Github repos
+You can see other components of this project in the following Github repos:
 
 - [ColorSplashPhotoRetrieval](https://github.com/DanielThurau/ColorSplashPhotoRetrieval)
 - [ColorSplashColorDetector](https://github.com/DanielThurau/ColorSplashColorDetector)
